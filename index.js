@@ -89,6 +89,13 @@ async function run() {
       res.send(review);
     });
 
+    app.get("/review", async (req, res) => {
+      const query = {};
+      const cursor = reviewCollection.find(query);
+      const allReviews = await cursor.toArray();
+      res.send(allReviews);
+    });
+
   } finally {
   }
 }
